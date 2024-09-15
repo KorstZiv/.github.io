@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База знаний 2040World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Надпись с огненным эффектом -->
+    <h1 class="clan-title-fire">Сайт является собственностью клана Legion 2040</h1>
+
+    <!-- Блок с текстом приветствия -->
+    <div class="welcome-text">
+        <p>В мире 2040 есть множество ресурсов, которые сейчас используются для создания аватаров. В будущем они также будут нужны для производства оружия, брони, расходных материалов и прочего. Вы сможете арендовать производство у других игроков или приобрести собственное. Но об этом мы поговорим позже.</p>
+
+        <p>Сейчас давайте рассмотрим, что вам нужно знать о ресурсах.</p>
+
+        <p>Ресурсы можно получить как с тел убитых монстров, так и из руды, которую можно найти на всей карте. Различные виды ресурсов добываются из разных источников. В таблице ниже вы найдёте всю необходимую информацию.</p>
+
+        <p><em>*Таблица будет дополняться и изменяться по мере добавления новых ресурсов, мобов, руды и других источников, с которыми столкнётся игрок.</em></p>
+    </div>
+
+    <main>
+        <!-- Левая панель с разделами -->
+        <div class="left-panel">
+            <!-- Раздел ресурсов -->
+            <section id="resources">
+                <h2>Ресурсы</h2>
+                <div class="resource-grid" id="resources-grid"></div>
+            </section>
+
+            <!-- Раздел мобов -->
+            <section id="mobs">
+                <h2>Мобы</h2>
+                <div class="resource-grid" id="mobs-grid"></div>
+            </section>
+
+            <!-- Раздел руды -->
+            <section id="ores">
+                <h2>Руда</h2>
+                <div class="resource-grid" id="ores-grid"></div>
+            </section>
+        </div>
+
+        <!-- Правая панель -->
+        <div class="right-panel" id="right-panel">
+            <div class="right-panel-content">
+                <!-- Иконки и названия -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Данные о ресурсах, мобах и руде
+        const data = {
+            resources: [
+                { name: 'Lithium Ore', image: 'Lithium_Ore.png', sources: ['Камень_Синий.png'] },
+                { name: 'Quartz', image: 'Quartz.png', sources: ['Камень_Жёлтый.png', 'Камень_Синий.png'] },
+                { name: 'Rare Earth Elements', image: 'Rare_Earth_Elements.png', sources: ['Камень_Зелёный.png'] },
+                { name: 'Magnetite', image: 'Magnetite.png', sources: ['Камень_Фиолетовый.png'] },
+                { name: 'Robotic Module', image: 'Robotic_Module.png', sources: ['Дрон.png', 'Турель.png'] },
+                { name: 'Energy Crystal', image: 'Energy_Crystal.png', sources: ['Дрон.png'] },
+                { name: 'Photon Gel', image: 'Photon_Gel.png', sources: ['Турель.png'] },
+                { name: 'Plasma Condensate', image: 'Plasma_Condensate.png', sources: ['Дрон.png', 'Турель.png'] },
+                { name: 'Organic Polymers', image: 'Organic_Polymers.png', sources: ['Баран.png', 'Лазер_гриб.png'] },
+                { name: 'Biological Extract', image: 'Biological_Extract.png', sources: ['Жаба.png', 'Мама_жаба.png'] },
+                { name: 'Genetically-Modified Enzymes', image: 'Genetically_Modified_Enzymes.png', sources: ['Мама_жаба.png', 'Жаба.png'] },
+                { name: 'Exotic Spores', image: 'Exotic_Spores.png', sources: ['Лазер_гриб.png'] },
+                { name: 'Heat Regulating Glands', image: 'Heat_Regulating_Glands.png', sources: ['Мама_жаба.png', 'Баран.png', 'Жаба.png', 'Лазер_гриб.png'] },
+                { name: 'Protein Fiber', image: 'Protein_Fiber.png', sources: ['Баран.png', 'Лазер_гриб.png'] },
+                { name: 'Nanofibers', image: 'Nanofibers.png', sources: ['Горилла.png', 'Баран.png'] },
+                { name: 'Radioactive Isotopes', image: 'Radioactive_Isotopes.png', sources: ['Камень_Зелёный.png'] },
+                { name: 'Uncommon Shard', image: 'Uncommon_Shard.png', sources: ['Зелёный_Аватар.png', 'Камень_Зелёный.png', 'Камень_Синий.png', 'Камень_Фиолетовый.png', 'Улитка.png', 'Мама_жаба.png', 'Баран.png', 'Турель.png', 'Жаба.png', 'Лазер_гриб.png'] },
+                { name: 'Rare Shard', image: 'Rare_Shard.png', sources: ['Синий_Аватар.png', 'Гвард.png', 'Улитка.png', 'Горилла.png', 'Турель.png', 'Мама_жаба.png'] },
+                { name: 'Epic Shard', image: 'Epic_Shard.png', sources: ['Фиолетовый_Аватар.png', 'Гвард.png', 'Горилла.png', 'Улитка.png'] },
+                { name: 'Rare Lootbox', image: 'Rare_Lootbox.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Турель.png', 'Мама_жаба.png'] },
+                { name: 'Acid', image: 'Acid.png', sources: ['Жаба.png', 'Мама_жаба.png'] },
+                { name: 'Rare Key', image: 'Rare_Key.png', sources: ['Дрон.png', 'Турель.png', 'Мама_жаба.png', 'Горилла.png', 'Гвард.png', 'Улитка.png'] },
+                { name: 'Epic Lootbox', image: 'Epic_Lootbox.png', sources: ['Гвард.png', 'Улитка.png', 'Горилла.png'] },
+                { name: 'Epic Key', image: 'Epic_Key.png', sources: ['Гвард.png', 'Улитка.png'] },
+                { name: 'Uncommon Lootbox', image: 'Uncommon_Lootbox.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Мама_жаба.png', 'Турель.png', 'Баран.png', 'Жаба.png', 'Лазер_гриб.png'] },
+                { name: 'Uncommon Key', image: 'Uncommon_Key.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Мама_жаба.png', 'Турель.png', 'Баран.png', 'Жаба.png', 'Лазер_гриб.png'] }
+            ],
+            mobs: [
+                { name: 'Жаба', image: 'Жаба.png', drops: ['Biological_Extract.png', 'Acid.png', 'Heat_Regulating_Glands.png'] },
+                { name: 'Улитка', image: 'Улитка.png', drops: ['Uncommon_Shard.png', 'Rare_Shard.png', 'Epic_Shard.png', 'Rare_Lootbox.png', 'Epic_Lootbox.png', 'Rare_Key.png', 'Epic_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Гвард', image: 'Гвард.png', drops: ['Rare_Shard.png', 'Epic_Shard.png', 'Rare_Lootbox.png', 'Epic_Lootbox.png', 'Rare_Key.png', 'Epic_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Горилла', image: 'Горилла.png', drops: ['Nanofibers.png', 'Uncommon_Shard.png', 'Rare_Shard.png', 'Epic_Shard.png', 'Rare_Lootbox.png', 'Epic_Lootbox.png', 'Rare_Key.png', 'Epic_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Баран', image: 'Баран.png', drops: ['Protein_Fiber.png', 'Heat_Regulating_Glands.png', 'Organic_Polymers.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Лазер-гриб', image: 'Лазер_гриб.png', drops: ['Heat_Regulating_Glands.png', 'Protein_Fiber.png', 'Exotic_Spores.png', 'Organic_Polymers.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Мама-жаба', image: 'Мама_жаба.png', drops: ['Biological_Extract.png', 'Genetically_Modified_Enzymes.png', 'Uncommon_Shard.png', 'Rare_Shard.png', 'Rare_Lootbox.png', 'Acid.png', 'Heat_Regulating_Glands.png', 'Rare_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Дрон', image: 'Дрон.png', drops: ['Robotic_Module.png', 'Energy_Crystal.png', 'Plasma_Condensate.png', 'Rare_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Турель', image: 'Турель.png', drops: ['Robotic_Module.png', 'Photon_Gel.png', 'Plasma_Condensate.png', 'Genetically_Modified_Enzymes.png', 'Uncommon_Shard.png', 'Rare_Shard.png', 'Rare_Lootbox.png', 'Rare_Key.png', 'Uncommon_Lootbox.png', 'Uncommon_Key.png'] },
+                { name: 'Лицензионный Аватар', image: 'Лицензионный_Аватар.png', drops: ['Uncommon_Shard.png', 'Rare_Shard.png', 'Epic_Shard.png'] },
+                { name: 'Серый Аватар', image: 'Серый_Аватар1.png', drops: ['Рулетка.png'] }
+            ],
+            ores: [
+                { name: 'Камень Синий', image: 'Камень_Синий.png', drops: ['Lithium_Ore.png', 'Uncommon_Shard.png', 'Quartz.png'] },
+                { name: 'Камень Жёлтый', image: 'Камень_Жёлтый.png', drops: ['Quartz.png', 'Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] },
+                { name: 'Камень Зелёный', image: 'Камень_Зелёный.png', drops: ['Rare_Earth_Elements.png', 'Magnetite.png', 'Radioactive_Isotopes.png'] },
+                { name: 'Камень Фиолетовый', image: 'Камень_Фиолетовый.png', drops: ['Uncommon_Shard.png', 'Magnetite.png'] },
+                { name: 'Камень Тёмный', image: 'Камень_Тёмный.png', drops: ['Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] }
+            ]
+        };
+
+        // Функция для генерации элементов на странице
+        function generateGrid(sectionId, items) {
+            const grid = document.getElementById(sectionId);
+            items.forEach(item => {
+                const div = document.createElement('div');
+                div.classList.add('resource-item');
+                div.onmouseover = () => showInRightPanel(item.drops || item.sources, item.name);
+                div.onmouseout = clearRightPanel;
+
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.name;
+                div.appendChild(img);
+
+                const p = document.createElement('p');
+                p.textContent = item.name;
+                div.appendChild(p);
+
+                grid.appendChild(div);
+            });
+        }
+
+        // Генерация разделов
+        generateGrid('resources-grid', data.resources);
+        generateGrid('mobs-grid', data.mobs);
+        generateGrid('ores-grid', data.ores);
+
+        // Функция для отображения информации в правой панели
+        function showInRightPanel(images, title) {
+            const rightPanelContent = document.querySelector('.right-panel-content');
+            rightPanelContent.innerHTML = '';
+
+            const itemCount = images.length;
+            let imgClass = "";
+
+            if (itemCount > 9) {
+                imgClass = "extra-small";
+            } else if (itemCount > 6) {
+                imgClass = "small";
+            }
+
+            images.forEach((image) => {
+                const panelItem = document.createElement('div');
+                panelItem.className = 'right-panel-item';
+
+                const imgElement = document.createElement('img');
+                imgElement.src = image;
+                if (imgClass) {
+                    imgElement.className = imgClass;
+                }
+
+                panelItem.appendChild(imgElement);
+
+                const titleElement = document.createElement('p');
+                const imageName = image.replace('.png', '').replace(/_/g, ' ');
+                titleElement.textContent = imageName;
+                panelItem.appendChild(titleElement);
+
+                rightPanelContent.appendChild(panelItem);
+            });
+        }
+
+        // Функция для очистки правой панели
+        function clearRightPanel() {
+            document.querySelector('.right-panel-content').innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>
