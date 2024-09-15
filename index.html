@@ -57,10 +57,10 @@
         // Данные о ресурсах, мобах и руде с правильными названиями файлов
         const data = {
             resources: [
-                { name: 'Lithium Ore', image: 'Lithium_Ore.png', sources: ['Камень_синий.png'] },
-                { name: 'Quartz', image: 'Quartz.png', sources: ['Камень_жёлтый.png', 'Камень_синий.png', 'Камень_фиолетовый.png'] },
-                { name: 'Rare Earth Elements', image: 'Rare_Earth_Elements.png', sources: ['Камень_зелёный.png', 'Камень_фиолетовый.png', 'Камень_синий.png'] },
-                { name: 'Magnetite', image: 'Magnetite.png', sources: ['Камень_фиолетовый.png', 'Камень_зелёный.png'] },
+                { name: 'Lithium Ore', image: 'Lithium_Ore.png', sources: ['Камень_Синий.png'] },
+                { name: 'Quartz', image: 'Quartz.png', sources: ['Камень_Жёлтый.png', 'Камень_Синий.png', 'Камень_Фиолетовый.png'] },
+                { name: 'Rare Earth Elements', image: 'Rare_Earth_Elements.png', sources: ['Камень_Зелёный.png', 'Камень_Фиолетовый.png', 'Камень_синий.png'] },
+                { name: 'Magnetite', image: 'Magnetite.png', sources: ['Камень_Фиолетовый.png', 'Камень_Зелёный.png'] },
                 { name: 'Robotic Module', image: 'Robotic_Module.png', sources: ['Дрон.png', 'Турель.png'] },
                 { name: 'Energy Crystal', image: 'Energy_Crystal.png', sources: ['Дрон.png'] },
                 { name: 'Photon Gel', image: 'Photon_Gel.png', sources: ['Турель.png'] },
@@ -72,20 +72,20 @@
                 { name: 'Heat Regulating Glands', image: 'Heat_Regulating_Glands.png', sources: ['Мама_жаба.png', 'Баран.png', 'Жаба.png'] },
                 { name: 'Protein Fiber', image: 'Protein_Fiber.png', sources: ['Баран.png', 'Лазер_гриб.png'] },
                 { name: 'Nanofibers', image: 'Nanofibers.png', sources: ['Горилла.png', 'Баран.png'] },
-                { name: 'Radioactive Isotopes', image: 'Radioactive_Isotopes.png', sources: ['Камень_зелёный.png'] },
-                { name: 'Uncommon Shard', image: 'Uncommon_Shard.png', sources: ['Зелёный_Аватар.png', 'Камень_зелёный.png', 'Камень_синий.png', 'Камень_фиолетовый.png', 'Улитка.png', 'Мама_жаба.png', 'Баран.png', 'Турель.png', 'Жаба.png', 'Лазер_гриб.png'] },
+                { name: 'Radioactive Isotopes', image: 'Radioactive_Isotopes.png', sources: ['Камень_Зелёный.png'] },
+                { name: 'Uncommon Shard', image: 'Uncommon_Shard.png', sources: ['Зелёный_Аватар.png', 'Камень_Зелёный.png', 'Камень_Синий.png', 'Камень_Фиолетовый.png', 'Улитка.png', 'Мама_жаба.png', 'Баран.png', 'Турель.png', 'Жаба.png', 'Лазер_гриб.png'] },
                 { name: 'Rare Shard', image: 'Rare_Shard.png', sources: ['Синий_Аватар.png', 'Гвард.png', 'Улитка.png', 'Горилла.png', 'Турель.png', 'Мама_жаба.png'] },
                 { name: 'Epic Shard', image: 'Epic_Shard.png', sources: ['Фиолетовый_Аватар.png', 'Гвард.png', 'Горилла.png', 'Улитка.png'] },
                 { name: 'Rare Lootbox', image: 'Rare_Lootbox.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Турель.png', 'Мама_жаба.png'] },
                 { name: 'Acid', image: 'Acid.png', sources: ['Жаба.png', 'Мама_жаба.png'] },
                 { name: 'Rare Key', image: 'Rare_Key.png', sources: ['Дрон.png', 'Турель.png', 'Мама_жаба.png', 'Горилла.png', 'Гвард.png', 'Улитка.png'] },
                 { name: 'Epic Lootbox', image: 'Epic_Lootbox.png', sources: ['Гвард.png', 'Улитка.png', 'Горилла.png'] },
-                { name: 'Iron Ore', image: 'Iron_Ore.png', sources: ['Камень_тёмный.png', 'Камень_жёлтый.png'] },
+                { name: 'Iron Ore', image: 'Iron_Ore.png', sources: ['Камень_Тёмный.png', 'Камень_Жёлтый.png'] },
                 { name: 'Epic Key', image: 'Epic_Key.png', sources: ['Гвард.png', 'Улитка.png'] },
                 { name: 'Uncommon Lootbox', image: 'Uncommon_Lootbox.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Мама_жаба.png', 'Турель.png', 'Баран.png', 'Жаба.png', 'Лазер_гриб.png'] },
                 { name: 'Uncommon Key', image: 'Uncommon_Key.png', sources: ['Горилла.png', 'Гвард.png', 'Улитка.png', 'Мама_жаба.png', 'Турель.png', 'Баран.png', 'Жаба.png', 'Лазер_гриб.png'] },
-                { name: 'Coal', image: 'Coal.png', sources: ['Камень_тёмный.png', 'Камень_жёлтый.png', 'Камень_фиолетовый.png', 'Камень_зелёный.png'] },  <!-- Добавлено -->
-                { name: 'Copper Ore', image: 'Copper_Ore.png', sources: ['Камень_тёмный.png', 'Камень_жёлтый.png', 'Камень_синий.png'] } <!-- Добавлено -->
+                { name: 'Coal', image: 'Coal.png', sources: ['Камень_Тёмный.png', 'Камень_Жёлтый.png', 'Камень_Фиолетовый.png', 'Камень_Зелёный.png'] },  <!-- Добавлено -->
+                { name: 'Copper Ore', image: 'Copper_Ore.png', sources: ['Камень_Тёмный.png', 'Камень_Жёлтый.png', 'Камень_Синий.png'] } <!-- Добавлено -->
             ],
             mobs: [
                 { name: 'Жаба', image: 'Жаба.png', drops: ['Biological_Extract.png', 'Acid.png', 'Heat_Regulating_Glands.png'] },
@@ -101,11 +101,11 @@
                 { name: 'Серый Аватар', image: 'Серый_Аватар1.png', drops: ['Серый_Аватар.png'] }
             ],
             ores: [
-                { name: 'Камень Синий', image: 'Камень_синий.png', drops: ['Lithium_Ore.png', 'Uncommon_Shard.png', 'Quartz.png'] },
-                { name: 'Камень Жёлтый', image: 'Камень_жёлтый.png', drops: ['Quartz.png', 'Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] },
-                { name: 'Камень Зелёный', image: 'Камень_зелёный.png', drops: ['Rare_Earth_Elements.png', 'Magnetite.png', 'Radioactive_Isotopes.png'] },
-                { name: 'Камень Фиолетовый', image: 'Камень_фиолетовый.png', drops: ['Uncommon_Shard.png', 'Magnetite.png'] },
-                { name: 'Камень Тёмный', image: 'Камень_тёмный.png', drops: ['Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] }
+                { name: 'Камень Синий', image: 'Камень_Синий.png', drops: ['Lithium_Ore.png', 'Uncommon_Shard.png', 'Quartz.png'] },
+                { name: 'Камень Жёлтый', image: 'Камень_Жёлтый.png', drops: ['Quartz.png', 'Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] },
+                { name: 'Камень Зелёный', image: 'Камень_Зелёный.png', drops: ['Rare_Earth_Elements.png', 'Magnetite.png', 'Radioactive_Isotopes.png'] },
+                { name: 'Камень Фиолетовый', image: 'Камень_Фиолетовый.png', drops: ['Uncommon_Shard.png', 'Magnetite.png'] },
+                { name: 'Камень Тёмный', image: 'Камень_Тёмный.png', drops: ['Coal.png', 'Copper_Ore.png', 'Iron_Ore.png'] }
             ]
         };
 
